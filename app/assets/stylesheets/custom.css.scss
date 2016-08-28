@@ -2,5 +2,46 @@
 @import "bootstrap";
 
 body {
-  margin-top: 70px;
+  margin-top: 80px;
+}
+
+// navbar styling
+.navbar {
+  background: orange;
+}
+
+.navbar-header a.navbar-brand {
+  color: #ffffff;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.navbar-header a.navbar-brand:hover {
+  color: #ff0000;
+}
+
+.nav > li > a {
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  background: orange;
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+  background: orange;
+  color: #ff0000;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+  font-size: 130%;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #ff0000;
 }
