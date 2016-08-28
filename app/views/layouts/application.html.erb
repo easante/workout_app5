@@ -28,13 +28,25 @@
             <ul class="nav navbar-nav">
               <li class="active"><%= link_to "Home", root_path %></li>
             </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+            </ul>
           </div>
 
         </div>
       </nav>
     </header>
     
-    <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% flash.each do |key, message| %>
+          <div class="text-center alert
+                      alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
     
