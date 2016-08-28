@@ -45,3 +45,16 @@ body {
 .navbar-default .navbar-nav > li > a:hover {
   color: #ff0000;
 }
+
+// Devise Error Messages
+#error_explanation {
+ background-color: #f2dede;
+ color: #a94442;
+ text-align: left;
+ padding: 5px 20px;
+ margin-bottom: 30px;
+}
+
+#error_explanation h2 {
+ font-size: 150%;
+}
