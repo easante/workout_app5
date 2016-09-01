@@ -84,6 +84,7 @@ guard :rspec, cmd: "bin/rspec" do
   watch(rails.view_dirs) { |m| "spec/features/#{m[1]}" }
   watch(rails.routes)          { "#{rspec.spec_dir}" }
   watch(%r{^app/views/layouts/application.html.erb$}) { "spec/features" }
+  watch(%r{^app/views/shared/(.+).html.erb$}) { "spec/features" }
 
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
