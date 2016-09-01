@@ -9,6 +9,8 @@ class User < ApplicationRecord
          
   has_many :exercises
   
+  self.per_page = 10
+  
   def full_name
     [first_name, last_name].join(" ")
   end
