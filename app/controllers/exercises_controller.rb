@@ -46,7 +46,7 @@ class ExercisesController < ApplicationController
   private
   
   def set_exercise
-    @exercise = current_user.exercises.find params[:id]
+    @exercise = current_user.exercises.find_by(id: params[:id]) 
   end
   
   def exercise_params

@@ -1,4 +1,5 @@
-<div class="col-xs-12 col-md-10 col-md-offset-1">
+<% if @exercise %>
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
   <div>
     <h2 class="show-header">Showing <%= "#{@exercise.user.full_name}'s Workout Details" %></h2>
   </div>
@@ -33,3 +34,13 @@
       class: "btn btn-success btn-lg link", id: "back-btn" %>
   </div>
 </div>
+<% else %>
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
+    <h1>No exercises found for this period</h1>
+    
+    <div class="col-xs-12 col-md-10 member">
+      <%= link_to 'Back', user_exercises_path(current_user),
+        class: "btn btn-success btn-lg link", id: "back-btn" %>
+    </div>
+  </div>
+<% end %>

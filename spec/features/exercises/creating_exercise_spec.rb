@@ -36,5 +36,18 @@ RSpec.feature "Creating Exercise" do
     expect(page).to have_content("Workout details can't be blank")
     expect(page).to have_content("Activity date can't be blank")
   end
+  
+  scenario "with activity date over 7 days old does not show on page" do
+    fill_in "Duration", with: 70
+    fill_in "Workout details", with: "Weight lifting"
+    fill_in "Activity date", with: 8.days.ago
+    click_button "Create Exercise"
+    
+    within("h1") do
+      expect(page).to have_content("No exercises found for this period")
+    end
+
+    expect(page).to have_link("Back")
+  end
 
 end
