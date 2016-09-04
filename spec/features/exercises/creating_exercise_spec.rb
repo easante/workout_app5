@@ -49,5 +49,14 @@ RSpec.feature "Creating Exercise" do
 
     expect(page).to have_link("Back")
   end
+  
+  scenario "with a future activity date fails" do
+    fill_in "Duration", with: 70
+    fill_in "Workout details", with: "Weight lifting"
+    fill_in "Activity date", with: 1.day.from_now
+    click_button "Create Exercise"
+    
+    expect(page).to have_content("Activity date can't be in the future")
+  end
 
 end
