@@ -13,16 +13,26 @@ class ExercisesController < ApplicationController
   end
   
   def create
-    @exercise = current_user.exercises.new(exercise_params)
+    @exercise = current_user.exercises.find_by(workout_date: params[:exercise][:workout_date])
     
-    if @exercise.save
-      flash[:notice] = "Exercise has been created"
+    if @exercise
+      @exercise.update(exercise_params)
+      flash[:notice] = "Exercise has been updated"
       redirect_to [current_user, @exercise]
     else
-      flash.now[:alert] = "Exercise has not been created"
-      render :new
+      @exercise = current_user.exercises.new(exercise_params)
+    
+      if @exercise.save
+        flash[:notice] = "Exercise has been created"
+        redirect_to [current_user, @exercise]
+      else
+        flash.now[:alert] = "Exercise has not been created"
+        render :new
+      end
     end
   end
+    
+    
   
   def edit
   end
