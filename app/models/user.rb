@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
   has_one :room
+  has_many :messages
   
   validates :first_name, presence: true
   validates :last_name, presence: true

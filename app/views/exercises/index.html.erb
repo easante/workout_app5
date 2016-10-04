@@ -43,6 +43,29 @@
 </div>
 
 <div class="col-md-4 col-xs-12">
+  <div id="chat-window">
+    <header><%= current_room.name %></header>
+    
+    <div class="col-md-2" id="followers">
+      <% @followers.each do |follower| %>
+        <%= link_to follower.user.full_name, user_exercises_path(current_user, roomId: follower.user.room.id), class: 'followers' %>
+        <br />
+      <% end %>
+    </div>
+    
+    <div id="chat-box" data-channel="rooms" data-room-id=<%= current_room.id %>>
+      <% @messages.each do |message| %>
+        <%= render partial: 'shared/message', locals: { message: message } %>
+      <% end %>
+    </div>
+    
+    <div id="form-box">
+      <%= form_for @message do |f| %>
+        <%= f.text_field :body, id: 'message-field', class: 'form-control pull-left' %>
+        <%= f.submit 'Post', class: 'btn btn-default', id: 'post-btn' %>
+      <% end %>
+    </div>
+  </div>
   <h1 class="text-center">My Friends</h1>
   
   <% @friends.each do |friend| %>
